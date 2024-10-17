@@ -215,7 +215,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"username\": \"user\",\n    \"password\": \"user\",\n    \"rememberMe\": false\n}",
+									"raw": "{\n    \"username\": \"user1\",\n    \"password\": \"user\",\n    \"rememberMe\": false\n}",
 									"options": {
 										"raw": {
 											"language": "json"
