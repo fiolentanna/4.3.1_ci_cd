@@ -18,6 +18,7 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "9441809f-bff4-49ca-9829-e30efab6c773",
 										"exec": [
 											"pm.test(\"Status code is 200\", function () {",
 											"    pm.response.to.have.status(200);",
@@ -40,8 +41,7 @@
 											""
 										],
 										"type": "text/javascript",
-										"packages": {},
-										"id": "9441809f-bff4-49ca-9829-e30efab6c773"
+										"packages": {}
 									}
 								}
 							],
@@ -107,7 +107,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin\",\n    \"rememberMe\": false\n}",
+									"raw": "{\n    \"username\": \"admin_automation\",\n    \"password\": \"admin_automation\",\n    \"rememberMe\": false\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -129,6 +129,7 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "5ddae17d-a439-4f71-8034-8a3129fa1cdc",
 										"exec": [
 											"pm.test(\"Status code is 200\", function () {",
 											"    pm.response.to.have.status(200);",
@@ -145,8 +146,7 @@
 											""
 										],
 										"type": "text/javascript",
-										"packages": {},
-										"id": "5ddae17d-a439-4f71-8034-8a3129fa1cdc"
+										"packages": {}
 									}
 								}
 							],
@@ -212,7 +212,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"username\": \"anna_test_user\",\n    \"password\": \"annatest12345\",\n    \"rememberMe\": false\n}",
+									"raw": "{\n    \"username\": \"user\",\n    \"password\": \"user\",\n    \"rememberMe\": false\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -234,6 +234,7 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "afa5e159-f8fe-4a46-8f62-b230b932c0b3",
 										"exec": [
 											"pm.test(\"Status code is 200\", function () {",
 											"    pm.response.to.have.status(200);",
@@ -250,8 +251,7 @@
 											""
 										],
 										"type": "text/javascript",
-										"packages": {},
-										"id": "afa5e159-f8fe-4a46-8f62-b230b932c0b3"
+										"packages": {}
 									}
 								}
 							],
@@ -317,7 +317,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"username\": \"anna_teacher\",\n    \"password\": \"anna_teacher6789\",\n    \"rememberMe\": false\n}",
+									"raw": "{\n    \"username\": \"user\",\n    \"password\": \"user\",\n    \"rememberMe\": false\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -339,6 +339,7 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "bc080792-ca31-4969-a424-d8d06f093dfd",
 										"exec": [
 											"pm.test(\"Status code is 200\", function () {",
 											"    pm.response.to.have.status(200);",
@@ -355,8 +356,7 @@
 											""
 										],
 										"type": "text/javascript",
-										"packages": {},
-										"id": "bc080792-ca31-4969-a424-d8d06f093dfd"
+										"packages": {}
 									}
 								}
 							],
@@ -422,7 +422,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"username\": \"anna_teacher\",\n    \"password\": \"anna_teacher6789\",\n    \"rememberMe\": false\n}",
+									"raw": "{\n    \"username\": \"user\",\n    \"password\": \"user\",\n    \"rememberMe\": false\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -444,6 +444,7 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "ac997cf3-6fa8-417a-ba1f-06220e2a985f",
 										"exec": [
 											"pm.test(\"Status code is 200\", function () {",
 											"    pm.response.to.have.status(200);",
@@ -460,8 +461,7 @@
 											""
 										],
 										"type": "text/javascript",
-										"packages": {},
-										"id": "ac997cf3-6fa8-417a-ba1f-06220e2a985f"
+										"packages": {}
 									}
 								}
 							],
@@ -527,7 +527,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"username\": \"anna_teacher\",\n    \"password\": \"anna_teacher6789\",\n    \"rememberMe\": true\n}",
+									"raw": "{\n    \"username\": \"user\",\n    \"password\": \"user\",\n    \"rememberMe\": true\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -555,6 +555,7 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "9e15ad1c-337a-4f8e-8608-f4198ea778df",
 										"exec": [
 											"pm.test(\"Status code is 500\", function () {",
 											"    pm.response.to.have.status(500);",
@@ -572,8 +573,7 @@
 											""
 										],
 										"type": "text/javascript",
-										"packages": {},
-										"id": "9e15ad1c-337a-4f8e-8608-f4198ea778df"
+										"packages": {}
 									}
 								}
 							],
@@ -639,7 +639,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"username\": \"test1\",\n    \"password\": \"test1test\",\n    \"rememberMe\": false\n}",
+									"raw": "{\n    \"username\": \"user\",\n    \"password\": \"user\",\n    \"rememberMe\": false\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -767,6 +767,7 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "9e37a8bf-7403-4862-a7ed-09b3ca45cf7d",
 										"exec": [
 											"pm.test(\"Status code is 400\", function () {",
 											"    pm.response.to.have.status(400);",
@@ -784,8 +785,7 @@
 											""
 										],
 										"type": "text/javascript",
-										"packages": {},
-										"id": "9e37a8bf-7403-4862-a7ed-09b3ca45cf7d"
+										"packages": {}
 									}
 								}
 							],
@@ -851,7 +851,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"username\": \"\",\n    \"password\": \"admin\",\n    \"rememberMe\": false\n}",
+									"raw": "{\n    \"username\": \"\",\n    \"password\": \"user\",\n    \"rememberMe\": false\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -873,6 +873,7 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "ba129937-8150-4b56-879a-37eb5dc01a3c",
 										"exec": [
 											"pm.test(\"Status code is 401\", function () {",
 											"    pm.response.to.have.status(401);",
@@ -889,8 +890,7 @@
 											"});"
 										],
 										"type": "text/javascript",
-										"packages": {},
-										"id": "ba129937-8150-4b56-879a-37eb5dc01a3c"
+										"packages": {}
 									}
 								}
 							],
@@ -956,7 +956,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"username\": \"admin1\",\n    \"password\": \"admin\",\n    \"rememberMe\": false\n}",
+									"raw": "{\n    \"username\": \"user1pfilhf\",\n    \"password\": \"admin\",\n    \"rememberMe\": false\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -978,6 +978,7 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "e1372561-17bc-4814-9dc9-1a7bc1adf850",
 										"exec": [
 											"pm.test(\"Status code is 400\", function () {",
 											"    pm.response.to.have.status(400);",
@@ -995,8 +996,7 @@
 											""
 										],
 										"type": "text/javascript",
-										"packages": {},
-										"id": "e1372561-17bc-4814-9dc9-1a7bc1adf850"
+										"packages": {}
 									}
 								}
 							],
@@ -1062,7 +1062,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"\",\n    \"rememberMe\": false\n}",
+									"raw": "{\n    \"username\": \"user\",\n    \"password\": \"\",\n    \"rememberMe\": false\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1084,6 +1084,7 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "59ab3945-f7cc-4818-8328-ced9c7a2cdbf",
 										"exec": [
 											"pm.test(\"Status code is 401\", function () {",
 											"    pm.response.to.have.status(401);",
@@ -1100,8 +1101,7 @@
 											"});"
 										],
 										"type": "text/javascript",
-										"packages": {},
-										"id": "59ab3945-f7cc-4818-8328-ced9c7a2cdbf"
+										"packages": {}
 									}
 								}
 							],
@@ -1167,7 +1167,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin12345\",\n    \"rememberMe\": false\n}",
+									"raw": "{\n    \"username\": \"user\",\n    \"password\": \"admin12345\",\n    \"rememberMe\": false\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1189,6 +1189,7 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "7a968dd5-0c78-4488-aff1-46a8cd484c34",
 										"exec": [
 											"pm.test(\"Status code is 400\", function () {",
 											"    pm.response.to.have.status(400);",
@@ -1202,8 +1203,7 @@
 											""
 										],
 										"type": "text/javascript",
-										"packages": {},
-										"id": "7a968dd5-0c78-4488-aff1-46a8cd484c34"
+										"packages": {}
 									}
 								}
 							],
@@ -1269,7 +1269,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin\",\n    \"rememberMe\": \n}",
+									"raw": "{\n    \"username\": \"user\",\n    \"password\": \"user\",\n    \"rememberMe\": \n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1411,6 +1411,7 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "7937f0a8-d169-4df1-b377-6e5c79f464f8",
 										"exec": [
 											"pm.test(\"Status code is 400\", function () {",
 											"    pm.response.to.have.status(400);",
@@ -1423,8 +1424,7 @@
 											"});"
 										],
 										"type": "text/javascript",
-										"packages": {},
-										"id": "7937f0a8-d169-4df1-b377-6e5c79f464f8"
+										"packages": {}
 									}
 								}
 							],
@@ -1490,7 +1490,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"login\": \"test1\",\n    \"email\": \"test1@test.ru\",\n    \"password\": \"test1test\",\n    \"langKey\": \"en\"\n}\n\n//используются данные пользователя, который уже существует (зарегистрирован)",
+									"raw": "{\n    \"login\": \"user\",\n    \"email\": \"user\",\n    \"password\": \"user\",\n    \"langKey\": \"en\"\n}\n\n//используются данные пользователя, который уже существует (зарегистрирован)",
 									"options": {
 										"raw": {
 											"language": "json"
