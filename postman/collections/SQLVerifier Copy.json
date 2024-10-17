@@ -1,0 +1,4423 @@
+{
+	"info": {
+		"_postman_id": "ddd1976b-2b42-430b-8475-bc949556760a",
+		"name": "SQLVerifier Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "33850823-ddd1976b-2b42-430b-8475-bc949556760a"
+	},
+	"item": [
+		{
+			"name": "auth tests",
+			"item": [
+				{
+					"name": "happy path",
+					"item": [
+						{
+							"name": "admin auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Response time is less than 200ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);",
+											"});",
+											"",
+											"pm.test(\"Body is correct\", function () {",
+											"    pm.expect(pm.response.json()).to.have.property('id_token');",
+											"});",
+											"",
+											"pm.test(\"Status code name has string 'OK'\", function () {",
+											"    pm.response.to.have.status(\"OK\");",
+											"});",
+											"",
+											"const response = pm.response.json();",
+											"pm.environment.set(\"id_token\", response.id_token);",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"id": "9441809f-bff4-49ca-9829-e30efab6c773"
+									}
+								}
+							],
+							"id": "ceb91ae7-ac71-487d-9efe-3a51cc9d8a24",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "Accept-Language",
+										"value": "ru-RU,ru;q=0.9"
+									},
+									{
+										"key": "Connection",
+										"value": "keep-alive"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Origin",
+										"value": "http://localhost:8080"
+									},
+									{
+										"key": "Referer",
+										"value": "http://localhost:8080/login"
+									},
+									{
+										"key": "Sec-Fetch-Dest",
+										"value": "empty"
+									},
+									{
+										"key": "Sec-Fetch-Mode",
+										"value": "cors"
+									},
+									{
+										"key": "Sec-Fetch-Site",
+										"value": "same-origin"
+									},
+									{
+										"key": "User-Agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+									},
+									{
+										"key": "sec-ch-ua",
+										"value": "\"Chromium\";v=\"128\", \"Not;A=Brand\";v=\"24\", \"Google Chrome\";v=\"128\""
+									},
+									{
+										"key": "sec-ch-ua-mobile",
+										"value": "?0"
+									},
+									{
+										"key": "sec-ch-ua-platform",
+										"value": "\"macOS\""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin\",\n    \"rememberMe\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}authenticate",
+									"host": [
+										"{{baseURL}}authenticate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "student_user auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Response time is less than 200ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);",
+											"});",
+											"pm.test(\"Body is correct\", function () {",
+											"    pm.expect(pm.response.json()).to.have.property('id_token');",
+											"});",
+											"pm.test(\"Status code name has string 'OK\", function () {",
+											"    pm.response.to.have.status(\"OK\");",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"id": "5ddae17d-a439-4f71-8034-8a3129fa1cdc"
+									}
+								}
+							],
+							"id": "955c7e21-c2b6-47d9-b1a6-eeb908811737",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "Accept-Language",
+										"value": "ru-RU,ru;q=0.9"
+									},
+									{
+										"key": "Connection",
+										"value": "keep-alive"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Origin",
+										"value": "http://localhost:8080"
+									},
+									{
+										"key": "Referer",
+										"value": "http://localhost:8080/login"
+									},
+									{
+										"key": "Sec-Fetch-Dest",
+										"value": "empty"
+									},
+									{
+										"key": "Sec-Fetch-Mode",
+										"value": "cors"
+									},
+									{
+										"key": "Sec-Fetch-Site",
+										"value": "same-origin"
+									},
+									{
+										"key": "User-Agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+									},
+									{
+										"key": "sec-ch-ua",
+										"value": "\"Chromium\";v=\"128\", \"Not;A=Brand\";v=\"24\", \"Google Chrome\";v=\"128\""
+									},
+									{
+										"key": "sec-ch-ua-mobile",
+										"value": "?0"
+									},
+									{
+										"key": "sec-ch-ua-platform",
+										"value": "\"macOS\""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"anna_test_user\",\n    \"password\": \"annatest12345\",\n    \"rememberMe\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}authenticate",
+									"host": [
+										"{{baseURL}}authenticate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "teacher_user auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Response time is less than 200ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);",
+											"});",
+											"pm.test(\"Body is correct\", function () {",
+											"    pm.expect(pm.response.json()).to.have.property('id_token');",
+											"});",
+											"pm.test(\"Status code name has string 'OK\", function () {",
+											"    pm.response.to.have.status(\"OK\");",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"id": "afa5e159-f8fe-4a46-8f62-b230b932c0b3"
+									}
+								}
+							],
+							"id": "f35568a5-0803-4b77-a98f-15d8cf90ff99",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "Accept-Language",
+										"value": "ru-RU,ru;q=0.9"
+									},
+									{
+										"key": "Connection",
+										"value": "keep-alive"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Origin",
+										"value": "http://localhost:8080"
+									},
+									{
+										"key": "Referer",
+										"value": "http://localhost:8080/login"
+									},
+									{
+										"key": "Sec-Fetch-Dest",
+										"value": "empty"
+									},
+									{
+										"key": "Sec-Fetch-Mode",
+										"value": "cors"
+									},
+									{
+										"key": "Sec-Fetch-Site",
+										"value": "same-origin"
+									},
+									{
+										"key": "User-Agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+									},
+									{
+										"key": "sec-ch-ua",
+										"value": "\"Chromium\";v=\"128\", \"Not;A=Brand\";v=\"24\", \"Google Chrome\";v=\"128\""
+									},
+									{
+										"key": "sec-ch-ua-mobile",
+										"value": "?0"
+									},
+									{
+										"key": "sec-ch-ua-platform",
+										"value": "\"macOS\""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"anna_teacher\",\n    \"password\": \"anna_teacher6789\",\n    \"rememberMe\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}authenticate",
+									"host": [
+										"{{baseURL}}authenticate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "auth_remember_me_false",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Response time is less than 200ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);",
+											"});",
+											"pm.test(\"Body is correct\", function () {",
+											"    pm.expect(pm.response.json()).to.have.property('id_token');",
+											"});",
+											"pm.test(\"Status code name has string 'OK\", function () {",
+											"    pm.response.to.have.status(\"OK\");",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"id": "bc080792-ca31-4969-a424-d8d06f093dfd"
+									}
+								}
+							],
+							"id": "03813a8b-ed61-491c-90c0-74f9d8d0ae41",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "Accept-Language",
+										"value": "ru-RU,ru;q=0.9"
+									},
+									{
+										"key": "Connection",
+										"value": "keep-alive"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Origin",
+										"value": "http://localhost:8080"
+									},
+									{
+										"key": "Referer",
+										"value": "http://localhost:8080/login"
+									},
+									{
+										"key": "Sec-Fetch-Dest",
+										"value": "empty"
+									},
+									{
+										"key": "Sec-Fetch-Mode",
+										"value": "cors"
+									},
+									{
+										"key": "Sec-Fetch-Site",
+										"value": "same-origin"
+									},
+									{
+										"key": "User-Agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+									},
+									{
+										"key": "sec-ch-ua",
+										"value": "\"Chromium\";v=\"128\", \"Not;A=Brand\";v=\"24\", \"Google Chrome\";v=\"128\""
+									},
+									{
+										"key": "sec-ch-ua-mobile",
+										"value": "?0"
+									},
+									{
+										"key": "sec-ch-ua-platform",
+										"value": "\"macOS\""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"anna_teacher\",\n    \"password\": \"anna_teacher6789\",\n    \"rememberMe\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}authenticate",
+									"host": [
+										"{{baseURL}}authenticate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "auth_remember_me_true",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Response time is less than 200ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);",
+											"});",
+											"pm.test(\"Body is correct\", function () {",
+											"    pm.expect(pm.response.json()).to.have.property('id_token');",
+											"});",
+											"pm.test(\"Status code name has string 'OK\", function () {",
+											"    pm.response.to.have.status(\"OK\");",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"id": "ac997cf3-6fa8-417a-ba1f-06220e2a985f"
+									}
+								}
+							],
+							"id": "c9863ebb-d4b2-4bb4-9879-431ea6b679c3",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "Accept-Language",
+										"value": "ru-RU,ru;q=0.9"
+									},
+									{
+										"key": "Connection",
+										"value": "keep-alive"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Origin",
+										"value": "http://localhost:8080"
+									},
+									{
+										"key": "Referer",
+										"value": "http://localhost:8080/login"
+									},
+									{
+										"key": "Sec-Fetch-Dest",
+										"value": "empty"
+									},
+									{
+										"key": "Sec-Fetch-Mode",
+										"value": "cors"
+									},
+									{
+										"key": "Sec-Fetch-Site",
+										"value": "same-origin"
+									},
+									{
+										"key": "User-Agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+									},
+									{
+										"key": "sec-ch-ua",
+										"value": "\"Chromium\";v=\"128\", \"Not;A=Brand\";v=\"24\", \"Google Chrome\";v=\"128\""
+									},
+									{
+										"key": "sec-ch-ua-mobile",
+										"value": "?0"
+									},
+									{
+										"key": "sec-ch-ua-platform",
+										"value": "\"macOS\""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"anna_teacher\",\n    \"password\": \"anna_teacher6789\",\n    \"rememberMe\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}authenticate",
+									"host": [
+										"{{baseURL}}authenticate"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "a2c2e46a-8bb9-4b94-9910-b4e2a517c560"
+				},
+				{
+					"name": "bad path",
+					"item": [
+						{
+							"name": "auth as a non-activated user",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 500\", function () {",
+											"    pm.response.to.have.status(500);",
+											"});",
+											"pm.test(\"Response time is less than 200ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);",
+											"});",
+											"pm.test(\"Status code name has string 'Internal Server Error\", function () {",
+											"    pm.response.to.have.status(\"Internal Server Error\");",
+											"});",
+											"pm.test(\"Response body has string about not activated account\", function () {  ",
+											"  const responseData = pm.response.json();",
+											"  pm.expect(responseData.detail).to.be.a('string').and.to.have.lengthOf.at.least(1, \"User test1 was not activated\");",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"id": "9e15ad1c-337a-4f8e-8608-f4198ea778df"
+									}
+								}
+							],
+							"id": "8e951c99-02a4-42fa-8667-fd776cf3a593",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "Accept-Language",
+										"value": "ru-RU,ru;q=0.9"
+									},
+									{
+										"key": "Connection",
+										"value": "keep-alive"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Origin",
+										"value": "http://localhost:8080"
+									},
+									{
+										"key": "Referer",
+										"value": "http://localhost:8080/login"
+									},
+									{
+										"key": "Sec-Fetch-Dest",
+										"value": "empty"
+									},
+									{
+										"key": "Sec-Fetch-Mode",
+										"value": "cors"
+									},
+									{
+										"key": "Sec-Fetch-Site",
+										"value": "same-origin"
+									},
+									{
+										"key": "User-Agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+									},
+									{
+										"key": "sec-ch-ua",
+										"value": "\"Chromium\";v=\"128\", \"Not;A=Brand\";v=\"24\", \"Google Chrome\";v=\"128\""
+									},
+									{
+										"key": "sec-ch-ua-mobile",
+										"value": "?0"
+									},
+									{
+										"key": "sec-ch-ua-platform",
+										"value": "\"macOS\""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"test1\",\n    \"password\": \"test1test\",\n    \"rememberMe\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}authenticate",
+									"host": [
+										"{{baseURL}}authenticate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "wrong user_data",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {",
+											"    pm.response.to.have.status(401);",
+											"});",
+											"pm.test(\"Response time is less than 200ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);",
+											"});",
+											"pm.test(\"Status code name has string 'Unauthorized\", function () {",
+											"    pm.response.to.have.status(\"Unauthorized\");",
+											"});",
+											"pm.test(\"Response body has string 'Неверные учетные данные пользователя'\", function () {  ",
+											"  const responseData = pm.response.json();",
+											"  pm.expect(responseData.detail).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Неверные учетные данные пользователя\");",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"id": "1d3f69a6-0425-4c2e-a94d-26fe11aa7559"
+									}
+								}
+							],
+							"id": "b11ec5d7-92bc-4c85-9a54-be30312ae3b9",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "Accept-Language",
+										"value": "ru-RU,ru;q=0.9"
+									},
+									{
+										"key": "Connection",
+										"value": "keep-alive"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Origin",
+										"value": "http://localhost:8080"
+									},
+									{
+										"key": "Referer",
+										"value": "http://localhost:8080/login"
+									},
+									{
+										"key": "Sec-Fetch-Dest",
+										"value": "empty"
+									},
+									{
+										"key": "Sec-Fetch-Mode",
+										"value": "cors"
+									},
+									{
+										"key": "Sec-Fetch-Site",
+										"value": "same-origin"
+									},
+									{
+										"key": "User-Agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+									},
+									{
+										"key": "sec-ch-ua",
+										"value": "\"Chromium\";v=\"128\", \"Not;A=Brand\";v=\"24\", \"Google Chrome\";v=\"128\""
+									},
+									{
+										"key": "sec-ch-ua-mobile",
+										"value": "?0"
+									},
+									{
+										"key": "sec-ch-ua-platform",
+										"value": "\"macOS\""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"{{$randomUserName}}\",\n    \"password\": \"{{$randomCountry}}\",\n    \"rememberMe\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}authenticate",
+									"host": [
+										"{{baseURL}}authenticate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "empty username",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"pm.test(\"Response time is less than 200ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);",
+											"});",
+											"pm.test(\"Status code name has string 'Bad Request\", function () {",
+											"    pm.response.to.have.status(\"Bad Request\");",
+											"});",
+											"pm.test(\"Response body has string 'размер должен находиться в диапазоне от 1 до 50'\", function () {  ",
+											"    const responseData = pm.response.json();",
+											"    pm.expect(responseData.fieldErrors[0].message).to.be.a('string').and.to.have.lengthOf.at.least(1, \"размер должен находиться в диапазоне от 1 до 50\");",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"id": "9e37a8bf-7403-4862-a7ed-09b3ca45cf7d"
+									}
+								}
+							],
+							"id": "80d07c0b-546b-4232-aa87-cb0b31d422c0",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "Accept-Language",
+										"value": "ru-RU,ru;q=0.9"
+									},
+									{
+										"key": "Connection",
+										"value": "keep-alive"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Origin",
+										"value": "http://localhost:8080"
+									},
+									{
+										"key": "Referer",
+										"value": "http://localhost:8080/login"
+									},
+									{
+										"key": "Sec-Fetch-Dest",
+										"value": "empty"
+									},
+									{
+										"key": "Sec-Fetch-Mode",
+										"value": "cors"
+									},
+									{
+										"key": "Sec-Fetch-Site",
+										"value": "same-origin"
+									},
+									{
+										"key": "User-Agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+									},
+									{
+										"key": "sec-ch-ua",
+										"value": "\"Chromium\";v=\"128\", \"Not;A=Brand\";v=\"24\", \"Google Chrome\";v=\"128\""
+									},
+									{
+										"key": "sec-ch-ua-mobile",
+										"value": "?0"
+									},
+									{
+										"key": "sec-ch-ua-platform",
+										"value": "\"macOS\""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"\",\n    \"password\": \"admin\",\n    \"rememberMe\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}authenticate",
+									"host": [
+										"{{baseURL}}authenticate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "wrong username",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {",
+											"    pm.response.to.have.status(401);",
+											"});",
+											"pm.test(\"Response time is less than 200ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);",
+											"});",
+											"pm.test(\"Status code name has string 'Unauthorized\", function () {",
+											"    pm.response.to.have.status(\"Unauthorized\");",
+											"});",
+											"pm.test(\"Response body has string 'Неверные учетные данные пользователя'\", function () {  ",
+											"  const responseData = pm.response.json();",
+											"  pm.expect(responseData.detail).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Неверные учетные данные пользователя\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"id": "ba129937-8150-4b56-879a-37eb5dc01a3c"
+									}
+								}
+							],
+							"id": "2ebd9f2c-7711-4344-b8a1-3bac1da24282",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "Accept-Language",
+										"value": "ru-RU,ru;q=0.9"
+									},
+									{
+										"key": "Connection",
+										"value": "keep-alive"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Origin",
+										"value": "http://localhost:8080"
+									},
+									{
+										"key": "Referer",
+										"value": "http://localhost:8080/login"
+									},
+									{
+										"key": "Sec-Fetch-Dest",
+										"value": "empty"
+									},
+									{
+										"key": "Sec-Fetch-Mode",
+										"value": "cors"
+									},
+									{
+										"key": "Sec-Fetch-Site",
+										"value": "same-origin"
+									},
+									{
+										"key": "User-Agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+									},
+									{
+										"key": "sec-ch-ua",
+										"value": "\"Chromium\";v=\"128\", \"Not;A=Brand\";v=\"24\", \"Google Chrome\";v=\"128\""
+									},
+									{
+										"key": "sec-ch-ua-mobile",
+										"value": "?0"
+									},
+									{
+										"key": "sec-ch-ua-platform",
+										"value": "\"macOS\""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"admin1\",\n    \"password\": \"admin\",\n    \"rememberMe\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}authenticate",
+									"host": [
+										"{{baseURL}}authenticate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "empty password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"pm.test(\"Response time is less than 200ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);",
+											"});",
+											"pm.test(\"Status code name has string 'Bad Request\", function () {",
+											"    pm.response.to.have.status(\"Bad Request\");",
+											"});",
+											"pm.test(\"Response body has string 'размер должен находиться в диапазоне от 4 до 100'\", function () {  ",
+											"    const responseData = pm.response.json();",
+											"    pm.expect(responseData.fieldErrors[0].message).to.be.a('string').and.to.have.lengthOf.at.least(1, \"размер должен находиться в диапазоне от 4 до 100\");",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"id": "e1372561-17bc-4814-9dc9-1a7bc1adf850"
+									}
+								}
+							],
+							"id": "21c4fcc1-7b45-427a-b4db-dbda1d431595",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "Accept-Language",
+										"value": "ru-RU,ru;q=0.9"
+									},
+									{
+										"key": "Connection",
+										"value": "keep-alive"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Origin",
+										"value": "http://localhost:8080"
+									},
+									{
+										"key": "Referer",
+										"value": "http://localhost:8080/login"
+									},
+									{
+										"key": "Sec-Fetch-Dest",
+										"value": "empty"
+									},
+									{
+										"key": "Sec-Fetch-Mode",
+										"value": "cors"
+									},
+									{
+										"key": "Sec-Fetch-Site",
+										"value": "same-origin"
+									},
+									{
+										"key": "User-Agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+									},
+									{
+										"key": "sec-ch-ua",
+										"value": "\"Chromium\";v=\"128\", \"Not;A=Brand\";v=\"24\", \"Google Chrome\";v=\"128\""
+									},
+									{
+										"key": "sec-ch-ua-mobile",
+										"value": "?0"
+									},
+									{
+										"key": "sec-ch-ua-platform",
+										"value": "\"macOS\""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"\",\n    \"rememberMe\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}authenticate",
+									"host": [
+										"{{baseURL}}authenticate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "wrong password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {",
+											"    pm.response.to.have.status(401);",
+											"});",
+											"pm.test(\"Response time is less than 200ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);",
+											"});",
+											"pm.test(\"Status code name has string 'Unauthorized\", function () {",
+											"    pm.response.to.have.status(\"Unauthorized\");",
+											"});",
+											"pm.test(\"Response body has string 'Неверные учетные данные пользователя'\", function () {  ",
+											"  const responseData = pm.response.json();",
+											"  pm.expect(responseData.detail).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Неверные учетные данные пользователя\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"id": "59ab3945-f7cc-4818-8328-ced9c7a2cdbf"
+									}
+								}
+							],
+							"id": "2bb9c3c5-5f2b-4f6d-ace5-da941284eb6b",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "Accept-Language",
+										"value": "ru-RU,ru;q=0.9"
+									},
+									{
+										"key": "Connection",
+										"value": "keep-alive"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Origin",
+										"value": "http://localhost:8080"
+									},
+									{
+										"key": "Referer",
+										"value": "http://localhost:8080/login"
+									},
+									{
+										"key": "Sec-Fetch-Dest",
+										"value": "empty"
+									},
+									{
+										"key": "Sec-Fetch-Mode",
+										"value": "cors"
+									},
+									{
+										"key": "Sec-Fetch-Site",
+										"value": "same-origin"
+									},
+									{
+										"key": "User-Agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+									},
+									{
+										"key": "sec-ch-ua",
+										"value": "\"Chromium\";v=\"128\", \"Not;A=Brand\";v=\"24\", \"Google Chrome\";v=\"128\""
+									},
+									{
+										"key": "sec-ch-ua-mobile",
+										"value": "?0"
+									},
+									{
+										"key": "sec-ch-ua-platform",
+										"value": "\"macOS\""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin12345\",\n    \"rememberMe\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}authenticate",
+									"host": [
+										"{{baseURL}}authenticate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "empty remember me",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"pm.test(\"Response time is less than 200ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);",
+											"});",
+											"pm.test(\"Status code name has string 'Bad Request\", function () {",
+											"    pm.response.to.have.status(\"Bad Request\");",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"id": "7a968dd5-0c78-4488-aff1-46a8cd484c34"
+									}
+								}
+							],
+							"id": "86c9fc0d-3fac-430a-8660-df6abf04c73f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "Accept-Language",
+										"value": "ru-RU,ru;q=0.9"
+									},
+									{
+										"key": "Connection",
+										"value": "keep-alive"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Origin",
+										"value": "http://localhost:8080"
+									},
+									{
+										"key": "Referer",
+										"value": "http://localhost:8080/login"
+									},
+									{
+										"key": "Sec-Fetch-Dest",
+										"value": "empty"
+									},
+									{
+										"key": "Sec-Fetch-Mode",
+										"value": "cors"
+									},
+									{
+										"key": "Sec-Fetch-Site",
+										"value": "same-origin"
+									},
+									{
+										"key": "User-Agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+									},
+									{
+										"key": "sec-ch-ua",
+										"value": "\"Chromium\";v=\"128\", \"Not;A=Brand\";v=\"24\", \"Google Chrome\";v=\"128\""
+									},
+									{
+										"key": "sec-ch-ua-mobile",
+										"value": "?0"
+									},
+									{
+										"key": "sec-ch-ua-platform",
+										"value": "\"macOS\""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin\",\n    \"rememberMe\": \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}authenticate",
+									"host": [
+										"{{baseURL}}authenticate"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "fe7ada67-b60d-429f-9155-8c2f7fc9b229"
+				}
+			],
+			"id": "792d8e44-93dc-479c-98c9-0addcd2be7c1"
+		},
+		{
+			"name": "user registration tests",
+			"item": [
+				{
+					"name": "happy path",
+					"item": [
+						{
+							"name": "register new user",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"pm.test(\"Response time is less than 200ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);",
+											"});",
+											"pm.test(\"Status code name has string 'Created\", function () {",
+											"    pm.response.to.have.status(\"Created\");",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"id": "85ce0c57-8bab-4efc-965b-516bba5101fd"
+									}
+								}
+							],
+							"id": "19b4523f-c7ea-41ac-a5f4-a3861fe17d56",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "Accept-Language",
+										"value": "ru-RU,ru;q=0.9"
+									},
+									{
+										"key": "Connection",
+										"value": "keep-alive"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Origin",
+										"value": "http://localhost:8080"
+									},
+									{
+										"key": "Referer",
+										"value": "http://localhost:8080/account/register"
+									},
+									{
+										"key": "Sec-Fetch-Dest",
+										"value": "empty"
+									},
+									{
+										"key": "Sec-Fetch-Mode",
+										"value": "cors"
+									},
+									{
+										"key": "Sec-Fetch-Site",
+										"value": "same-origin"
+									},
+									{
+										"key": "User-Agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+									},
+									{
+										"key": "sec-ch-ua",
+										"value": "\"Chromium\";v=\"128\", \"Not;A=Brand\";v=\"24\", \"Google Chrome\";v=\"128\""
+									},
+									{
+										"key": "sec-ch-ua-mobile",
+										"value": "?0"
+									},
+									{
+										"key": "sec-ch-ua-platform",
+										"value": "\"macOS\""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"login\": \"{{$randomUserName}}\",\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"{{$randomPassword}}\",\n    \"langKey\": \"en\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}register",
+									"host": [
+										"{{baseURL}}register"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "554a8b1a-7e28-435e-b083-859ceadb99ee"
+				},
+				{
+					"name": "bad path",
+					"item": [
+						{
+							"name": "with same data",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"pm.test(\"Response time is less than 200ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);",
+											"});",
+											"pm.test(\"Status code name has string 'Bad request'\", function () {",
+											"    pm.response.to.have.status(\"Bad request\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"id": "7937f0a8-d169-4df1-b377-6e5c79f464f8"
+									}
+								}
+							],
+							"id": "1d820dee-390b-4e6d-a157-17bc992cf091",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "Accept-Language",
+										"value": "ru-RU,ru;q=0.9"
+									},
+									{
+										"key": "Connection",
+										"value": "keep-alive"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Origin",
+										"value": "http://localhost:8080"
+									},
+									{
+										"key": "Referer",
+										"value": "http://localhost:8080/account/register"
+									},
+									{
+										"key": "Sec-Fetch-Dest",
+										"value": "empty"
+									},
+									{
+										"key": "Sec-Fetch-Mode",
+										"value": "cors"
+									},
+									{
+										"key": "Sec-Fetch-Site",
+										"value": "same-origin"
+									},
+									{
+										"key": "User-Agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+									},
+									{
+										"key": "sec-ch-ua",
+										"value": "\"Chromium\";v=\"128\", \"Not;A=Brand\";v=\"24\", \"Google Chrome\";v=\"128\""
+									},
+									{
+										"key": "sec-ch-ua-mobile",
+										"value": "?0"
+									},
+									{
+										"key": "sec-ch-ua-platform",
+										"value": "\"macOS\""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"login\": \"test1\",\n    \"email\": \"test1@test.ru\",\n    \"password\": \"test1test\",\n    \"langKey\": \"en\"\n}\n\n//используются данные пользователя, который уже существует (зарегистрирован)",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}register",
+									"host": [
+										"{{baseURL}}register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "empty login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"pm.test(\"Response time is less than 200ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);",
+											"});",
+											"pm.test(\"Status code name has string 'Bad Request'\", function () {",
+											"    pm.response.to.have.status(\"Bad Request\");",
+											"});",
+											"pm.test(\"Response body has string 'не должно быть пустым'\", function () {  ",
+											"    const responseData = pm.response.json();",
+											"    pm.expect(responseData.fieldErrors[1].message).to.be.a('string').and.to.have.lengthOf.at.least(1, \"не должно быть пустым\");",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"id": "eef574ec-a479-42f2-b7f5-5e3962d46518"
+									}
+								}
+							],
+							"id": "a62872d4-5b4c-4a68-bf95-731c233a5271",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "Accept-Language",
+										"value": "ru-RU,ru;q=0.9"
+									},
+									{
+										"key": "Connection",
+										"value": "keep-alive"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Origin",
+										"value": "http://localhost:8080"
+									},
+									{
+										"key": "Referer",
+										"value": "http://localhost:8080/account/register"
+									},
+									{
+										"key": "Sec-Fetch-Dest",
+										"value": "empty"
+									},
+									{
+										"key": "Sec-Fetch-Mode",
+										"value": "cors"
+									},
+									{
+										"key": "Sec-Fetch-Site",
+										"value": "same-origin"
+									},
+									{
+										"key": "User-Agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+									},
+									{
+										"key": "sec-ch-ua",
+										"value": "\"Chromium\";v=\"128\", \"Not;A=Brand\";v=\"24\", \"Google Chrome\";v=\"128\""
+									},
+									{
+										"key": "sec-ch-ua-mobile",
+										"value": "?0"
+									},
+									{
+										"key": "sec-ch-ua-platform",
+										"value": "\"macOS\""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"login\": \"\", // поле не заполнено\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"{{$randomPassword}}\",\n    \"langKey\": \"en\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}register",
+									"host": [
+										"{{baseURL}}register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login >50",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"pm.test(\"Response time is less than 200ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);",
+											"});",
+											"pm.test(\"Status code name has string 'Bad Request'\", function () {",
+											"    pm.response.to.have.status(\"Bad Request\");",
+											"});",
+											"pm.test(\"Response body has string 'размер должен находиться в диапазоне от 1 до 50'\", function () {  ",
+											"    const responseData = pm.response.json();",
+											"    pm.expect(responseData.fieldErrors[0].message).to.be.a('string').and.to.have.lengthOf.at.least(1, \"размер должен находиться в диапазоне от 1 до 50\");",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"id": "bdc4cb85-b8dd-4e07-a632-5a4429dc5e43"
+									}
+								}
+							],
+							"id": "df194a53-492c-413a-a7df-c8025d2870df",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "Accept-Language",
+										"value": "ru-RU,ru;q=0.9"
+									},
+									{
+										"key": "Connection",
+										"value": "keep-alive"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Origin",
+										"value": "http://localhost:8080"
+									},
+									{
+										"key": "Referer",
+										"value": "http://localhost:8080/account/register"
+									},
+									{
+										"key": "Sec-Fetch-Dest",
+										"value": "empty"
+									},
+									{
+										"key": "Sec-Fetch-Mode",
+										"value": "cors"
+									},
+									{
+										"key": "Sec-Fetch-Site",
+										"value": "same-origin"
+									},
+									{
+										"key": "User-Agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+									},
+									{
+										"key": "sec-ch-ua",
+										"value": "\"Chromium\";v=\"128\", \"Not;A=Brand\";v=\"24\", \"Google Chrome\";v=\"128\""
+									},
+									{
+										"key": "sec-ch-ua-mobile",
+										"value": "?0"
+									},
+									{
+										"key": "sec-ch-ua-platform",
+										"value": "\"macOS\""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"login\": \"gggjkhkjshfkjhsfkljshflskhflksjfljmfglsndjbfcmfbggf\", // 51 символ в поле\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"{{$randomPassword}}\",\n    \"langKey\": \"en\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}register",
+									"host": [
+										"{{baseURL}}register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "empty password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"id": "94985886-1628-4475-bfb3-65abf0c43f83"
+									}
+								}
+							],
+							"id": "41e83384-8007-45d7-9312-c64350be2083",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "Accept-Language",
+										"value": "ru-RU,ru;q=0.9"
+									},
+									{
+										"key": "Connection",
+										"value": "keep-alive"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Origin",
+										"value": "http://localhost:8080"
+									},
+									{
+										"key": "Referer",
+										"value": "http://localhost:8080/account/register"
+									},
+									{
+										"key": "Sec-Fetch-Dest",
+										"value": "empty"
+									},
+									{
+										"key": "Sec-Fetch-Mode",
+										"value": "cors"
+									},
+									{
+										"key": "Sec-Fetch-Site",
+										"value": "same-origin"
+									},
+									{
+										"key": "User-Agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+									},
+									{
+										"key": "sec-ch-ua",
+										"value": "\"Chromium\";v=\"128\", \"Not;A=Brand\";v=\"24\", \"Google Chrome\";v=\"128\""
+									},
+									{
+										"key": "sec-ch-ua-mobile",
+										"value": "?0"
+									},
+									{
+										"key": "sec-ch-ua-platform",
+										"value": "\"macOS\""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"login\": \"{{$randomUserName}}\",\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"\", //пароль не заполнен\n    \"langKey\": \"en\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}register",
+									"host": [
+										"{{baseURL}}register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "password <4",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"pm.test(\"Response time is less than 200ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);",
+											"});",
+											"pm.test(\"Status code name has string 'Bad Request'\", function () {",
+											"    pm.response.to.have.status(\"Bad Request\");",
+											"});",
+											"pm.test(\"Response body has string 'размер должен находиться в диапазоне от 4 до 100'\", function () {  ",
+											"    const responseData = pm.response.json();",
+											"    pm.expect(responseData.fieldErrors[0].message).to.be.a('string').and.to.have.lengthOf.at.least(1, \"размер должен находиться в диапазоне от 4 до 100\");",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"id": "bff36161-3b78-47e3-b5f3-a8d0f95591d7"
+									}
+								}
+							],
+							"id": "3f2b9096-dad7-4778-9a70-4a8b64bda5dc",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "Accept-Language",
+										"value": "ru-RU,ru;q=0.9"
+									},
+									{
+										"key": "Connection",
+										"value": "keep-alive"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Origin",
+										"value": "http://localhost:8080"
+									},
+									{
+										"key": "Referer",
+										"value": "http://localhost:8080/account/register"
+									},
+									{
+										"key": "Sec-Fetch-Dest",
+										"value": "empty"
+									},
+									{
+										"key": "Sec-Fetch-Mode",
+										"value": "cors"
+									},
+									{
+										"key": "Sec-Fetch-Site",
+										"value": "same-origin"
+									},
+									{
+										"key": "User-Agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+									},
+									{
+										"key": "sec-ch-ua",
+										"value": "\"Chromium\";v=\"128\", \"Not;A=Brand\";v=\"24\", \"Google Chrome\";v=\"128\""
+									},
+									{
+										"key": "sec-ch-ua-mobile",
+										"value": "?0"
+									},
+									{
+										"key": "sec-ch-ua-platform",
+										"value": "\"macOS\""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"login\": \"{{$randomUserName}}\",\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"111\", \n    \"langKey\": \"en\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}register",
+									"host": [
+										"{{baseURL}}register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "password >100",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"pm.test(\"Response time is less than 200ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);",
+											"});",
+											"pm.test(\"Status code name has string 'Bad Request'\", function () {",
+											"    pm.response.to.have.status(\"Bad Request\");",
+											"});",
+											"pm.test(\"Response body has string 'размер должен находиться в диапазоне от 4 до 100'\", function () {  ",
+											"    const responseData = pm.response.json();",
+											"    pm.expect(responseData.fieldErrors[0].message).to.be.a('string').and.to.have.lengthOf.at.least(1, \"размер должен находиться в диапазоне от 4 до 100\");",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"id": "b1b92da8-f604-4083-a694-69768dcf9e32"
+									}
+								}
+							],
+							"id": "9e00bec7-e47a-41f1-8017-53500cce8f11",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "Accept-Language",
+										"value": "ru-RU,ru;q=0.9"
+									},
+									{
+										"key": "Connection",
+										"value": "keep-alive"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Origin",
+										"value": "http://localhost:8080"
+									},
+									{
+										"key": "Referer",
+										"value": "http://localhost:8080/account/register"
+									},
+									{
+										"key": "Sec-Fetch-Dest",
+										"value": "empty"
+									},
+									{
+										"key": "Sec-Fetch-Mode",
+										"value": "cors"
+									},
+									{
+										"key": "Sec-Fetch-Site",
+										"value": "same-origin"
+									},
+									{
+										"key": "User-Agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+									},
+									{
+										"key": "sec-ch-ua",
+										"value": "\"Chromium\";v=\"128\", \"Not;A=Brand\";v=\"24\", \"Google Chrome\";v=\"128\""
+									},
+									{
+										"key": "sec-ch-ua-mobile",
+										"value": "?0"
+									},
+									{
+										"key": "sec-ch-ua-platform",
+										"value": "\"macOS\""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"login\": \"{{$randomUserName}}\",\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"gggjkhkjshfkjhsfkljshflskhflksjfljmfglsndjbfcmfbgggjkhkjshfkjhsfkljshflskhflksjfljmfglsndjbfcmfbggghh\", \n    \"langKey\": \"en\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}register",
+									"host": [
+										"{{baseURL}}register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "empty langKey",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"pm.test(\"Response time is less than 200ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);",
+											"});",
+											"pm.test(\"Status code name has string 'Bad Request'\", function () {",
+											"    pm.response.to.have.status(\"Bad Request\");",
+											"});",
+											"pm.test(\"Response body has string 'размер должен находиться в диапазоне от 2 до 10'\", function () {  ",
+											"    const responseData = pm.response.json();",
+											"    pm.expect(responseData.fieldErrors[0].message).to.be.a('string').and.to.have.lengthOf.at.least(1, \"размер должен находиться в диапазоне от 2 до 10\");",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"id": "04dbd8e3-ebab-4e49-b3c7-78c796086d27"
+									}
+								}
+							],
+							"id": "19fa8486-fea0-4821-bc50-36ecff347717",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "Accept-Language",
+										"value": "ru-RU,ru;q=0.9"
+									},
+									{
+										"key": "Connection",
+										"value": "keep-alive"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Origin",
+										"value": "http://localhost:8080"
+									},
+									{
+										"key": "Referer",
+										"value": "http://localhost:8080/account/register"
+									},
+									{
+										"key": "Sec-Fetch-Dest",
+										"value": "empty"
+									},
+									{
+										"key": "Sec-Fetch-Mode",
+										"value": "cors"
+									},
+									{
+										"key": "Sec-Fetch-Site",
+										"value": "same-origin"
+									},
+									{
+										"key": "User-Agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+									},
+									{
+										"key": "sec-ch-ua",
+										"value": "\"Chromium\";v=\"128\", \"Not;A=Brand\";v=\"24\", \"Google Chrome\";v=\"128\""
+									},
+									{
+										"key": "sec-ch-ua-mobile",
+										"value": "?0"
+									},
+									{
+										"key": "sec-ch-ua-platform",
+										"value": "\"macOS\""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"login\": \"{{$randomUserName}}\",\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"{{$randomPassword}}\",\n    \"langKey\": \"\" //не заполнено\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}register",
+									"host": [
+										"{{baseURL}}register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "langKey <2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"pm.test(\"Response time is less than 200ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);",
+											"});",
+											"pm.test(\"Status code name has string 'Bad Request'\", function () {",
+											"    pm.response.to.have.status(\"Bad Request\");",
+											"});",
+											"pm.test(\"Response body has string 'размер должен находиться в диапазоне от 2 до 10'\", function () {  ",
+											"    const responseData = pm.response.json();",
+											"    pm.expect(responseData.fieldErrors[0].message).to.be.a('string').and.to.have.lengthOf.at.least(1, \"размер должен находиться в диапазоне от 2 до 10\");",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"id": "d0a647fd-d7d3-4b1f-8920-b8bbcc95c9de"
+									}
+								}
+							],
+							"id": "a0c1d0d3-c977-4025-9e4d-686550fe42e8",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "Accept-Language",
+										"value": "ru-RU,ru;q=0.9"
+									},
+									{
+										"key": "Connection",
+										"value": "keep-alive"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Origin",
+										"value": "http://localhost:8080"
+									},
+									{
+										"key": "Referer",
+										"value": "http://localhost:8080/account/register"
+									},
+									{
+										"key": "Sec-Fetch-Dest",
+										"value": "empty"
+									},
+									{
+										"key": "Sec-Fetch-Mode",
+										"value": "cors"
+									},
+									{
+										"key": "Sec-Fetch-Site",
+										"value": "same-origin"
+									},
+									{
+										"key": "User-Agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+									},
+									{
+										"key": "sec-ch-ua",
+										"value": "\"Chromium\";v=\"128\", \"Not;A=Brand\";v=\"24\", \"Google Chrome\";v=\"128\""
+									},
+									{
+										"key": "sec-ch-ua-mobile",
+										"value": "?0"
+									},
+									{
+										"key": "sec-ch-ua-platform",
+										"value": "\"macOS\""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"login\": \"{{$randomUserName}}\",\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"{{$randomPassword}}\",\n    \"langKey\": \"e\" \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}register",
+									"host": [
+										"{{baseURL}}register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "langKey is number",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"pm.test(\"Response time is less than 200ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);",
+											"});",
+											"pm.test(\"Status code name has string 'Bad Request'\", function () {",
+											"    pm.response.to.have.status(\"Bad Request\");",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"id": "e04b46dc-908e-45c0-b8e1-bcf79ab137a7"
+									}
+								}
+							],
+							"id": "cddbb1be-8418-4e10-916a-d0277f7bb85c",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "Accept-Language",
+										"value": "ru-RU,ru;q=0.9"
+									},
+									{
+										"key": "Connection",
+										"value": "keep-alive"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Origin",
+										"value": "http://localhost:8080"
+									},
+									{
+										"key": "Referer",
+										"value": "http://localhost:8080/account/register"
+									},
+									{
+										"key": "Sec-Fetch-Dest",
+										"value": "empty"
+									},
+									{
+										"key": "Sec-Fetch-Mode",
+										"value": "cors"
+									},
+									{
+										"key": "Sec-Fetch-Site",
+										"value": "same-origin"
+									},
+									{
+										"key": "User-Agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+									},
+									{
+										"key": "sec-ch-ua",
+										"value": "\"Chromium\";v=\"128\", \"Not;A=Brand\";v=\"24\", \"Google Chrome\";v=\"128\""
+									},
+									{
+										"key": "sec-ch-ua-mobile",
+										"value": "?0"
+									},
+									{
+										"key": "sec-ch-ua-platform",
+										"value": "\"macOS\""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"login\": \"{{$randomUserName}}\",\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"{{$randomPassword}}\",\n    \"langKey\": \"237\" \n}\n\n//langKey должен быть в формате ISO 639-1 или ISO 639-2 и состоять из букв",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}register",
+									"host": [
+										"{{baseURL}}register"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "4c15e728-4136-4c94-a17d-341a027d8929"
+				}
+			],
+			"id": "66084401-fc2c-460c-b6ac-6499a885c094"
+		},
+		{
+			"name": "tasks",
+			"item": [
+				{
+					"name": "create task",
+					"item": [
+						{
+							"name": "happy path",
+							"item": [
+								{
+									"name": "task creation",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 201\", function () {",
+													"    pm.response.to.have.status(201);",
+													"});",
+													"",
+													"pm.test(\"Status code name has string 'Created'\", function () {",
+													"    pm.response.to.have.status(\"Created\");",
+													"});",
+													"",
+													"const jsonData = pm.response.json();",
+													"pm.test(\"Response body contains 'id'\", function () {",
+													"    pm.expect(jsonData).to.have.property('id');",
+													"});",
+													"",
+													"pm.test(\"Response body contains 'text'\", function () {",
+													"    pm.expect(jsonData).to.have.property('text');",
+													"});",
+													"",
+													"pm.test(\"Response body contains 'title'\", function () {",
+													"    pm.expect(jsonData).to.have.property('title');",
+													"});",
+													"",
+													"pm.environment.set(\"id\", jsonData.id);",
+													"",
+													"pm.test(\"Accept is present in response headers\", function () {",
+													"    pm.response.to.have.header(\"Accept\");",
+													"});",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"id": "f625e09c-760d-459f-85bf-a9ded44288a8"
+											}
+										}
+									],
+									"id": "eb574e85-d339-4863-b0ab-804fd33f1c17",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{id_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"text\": \"{{$randomColor}}\",\n  \"answer\": \"{{$randomCity}}\",\n  \"title\": \"{{$randomCountry}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}tasks",
+											"host": [
+												"{{baseURL}}tasks"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "f7998bf2-76da-432f-ab9a-c837d60a65f4"
+						},
+						{
+							"name": "bad path",
+							"item": [
+								{
+									"name": "empty data in fields",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});",
+													"",
+													"pm.test(\"Status code name has string 'Bad Request'\", function () {",
+													"    pm.response.to.have.status(\"Bad Request\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"id": "cb035c89-2537-4905-ba8b-465009840396"
+											}
+										}
+									],
+									"id": "8da6835d-ed38-486e-a83f-fd92c49e5938",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{id_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"text\": \"\",\n  \"answer\": \"\",\n  \"title\": \"\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}tasks",
+											"host": [
+												"{{baseURL}}tasks"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "no auth",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 401\", function () {",
+													"    pm.response.to.have.status(401);",
+													"});",
+													"",
+													"pm.test(\"Status code name has string 'Unauthorized'\", function () {",
+													"    pm.response.to.have.status(\"Unauthorized\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"id": "e7faab05-ffd4-433b-91ff-66ed8241ea16"
+											}
+										}
+									],
+									"id": "1a01b75b-a0bd-4f3d-a392-10806194119a",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"text\": \"{{$randomColor}}\",\n  \"answer\": \"{{$randomCity}}\",\n  \"title\": \"{{$randomCountry}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}tasks",
+											"host": [
+												"{{baseURL}}tasks"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "empty text_field",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});",
+													"",
+													"pm.test(\"Status code name has string 'Bad Request'\", function () {",
+													"    pm.response.to.have.status(\"Bad Request\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"id": "3083ce1e-7236-433d-84d7-504fd7d41ef0"
+											}
+										}
+									],
+									"id": "27049bed-7fbd-429c-a5b1-1e00e3434ded",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{id_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"text\": \"\",\n  \"answer\": \"{{$randomCity}}\",\n  \"title\": \"{{$randomCountry}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}tasks",
+											"host": [
+												"{{baseURL}}tasks"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "empty answer_field",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});",
+													"",
+													"pm.test(\"Status code name has string 'Bad Request'\", function () {",
+													"    pm.response.to.have.status(\"Bad Request\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"id": "d6a479bd-20d2-4b51-b1fb-43c83c9d274d"
+											}
+										}
+									],
+									"id": "8382fdad-2f62-4a03-9409-7d4ab14efdf0",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{id_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"text\": \"{{$randomCity}}\",\n  \"answer\": \"\",\n  \"title\": \"{{$randomCountry}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}tasks",
+											"host": [
+												"{{baseURL}}tasks"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "empty title_field",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});",
+													"",
+													"pm.test(\"Status code name has string 'Bad Request'\", function () {",
+													"    pm.response.to.have.status(\"Bad Request\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"id": "aed70dcb-4793-4774-b0dc-d72f500a7fc7"
+											}
+										}
+									],
+									"id": "7a924386-1f1f-48e9-bc12-ead4d4eea2e1",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{id_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"text\": \"{{$randomCity}}\",\n  \"answer\": \"{{$randomCountry}}\",\n  \"title\": \"\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}tasks",
+											"host": [
+												"{{baseURL}}tasks"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "int in fields",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});",
+													"",
+													"pm.test(\"Status code name has string 'Bad Request'\", function () {",
+													"    pm.response.to.have.status(\"Bad Request\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"id": "4c951135-02eb-49f8-9a94-0c29f14a7306"
+											}
+										}
+									],
+									"id": "836855e1-2a08-4424-97cc-02593f3697e1",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{id_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"text\": 1,\n  \"answer\": 33,\n  \"title\": 234\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}tasks",
+											"host": [
+												"{{baseURL}}tasks"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "b666dab0-cdd1-42c8-8d3b-ed6f02049a71"
+						}
+					],
+					"id": "0af19bb8-3ee1-47aa-aa30-ce31c12c0f4d"
+				},
+				{
+					"name": "get task",
+					"item": [
+						{
+							"name": "happy path",
+							"item": [
+								{
+									"name": "existing task",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"pm.test(\"Status code name has string 'OK'\", function () {",
+													"    pm.response.to.have.status(\"OK\");",
+													"});",
+													"",
+													"pm.test(\"Response body contains 'text'\", function () {",
+													"    pm.expect(responseData).to.have.property('text');",
+													"});",
+													"",
+													"pm.test(\"Response body contains 'answer'\", function () {",
+													"    pm.expect(responseData).to.have.property('answer');",
+													"});",
+													"",
+													"pm.test(\"Response body contains 'title'\", function () {",
+													"    pm.expect(responseData).to.have.property('title');",
+													"});",
+													"",
+													"pm.test(\"Response body contains 'id'\", function () {",
+													"    pm.expect(responseData).to.have.property('id');",
+													"});",
+													"",
+													"pm.test(\"ID is a non-negative integer\", function () {",
+													"    pm.expect(responseData.id).to.be.a('number');",
+													"    pm.expect(responseData.id).to.be.at.least(0, \"ID should be a non-negative integer\");",
+													"});",
+													"",
+													"// Получаем id из переменных окружения",
+													"let envId = pm.environment.get(\"id\");",
+													"",
+													"// Проверяем, что id в ответе совпадает с id из переменной окружения",
+													"pm.test(\"ID from environment matches ID from response\", function () {",
+													"    pm.expect(responseData.id).to.eql(envId);",
+													"});",
+													"",
+													"pm.test(\"Accept is present in response headers\", function () {",
+													"    pm.response.to.have.header(\"Accept\");",
+													"});",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"id": "83816e05-79b4-4af8-9564-140e4b090efd"
+											}
+										}
+									],
+									"id": "a0ca8f7f-e68b-40a8-9981-995280863372",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{id_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}tasks/{{id}}",
+											"host": [
+												"{{baseURL}}tasks"
+											],
+											"path": [
+												"{{id}}"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "f80d254e-5325-4542-9769-eda0e0c945be"
+						},
+						{
+							"name": "bad path",
+							"item": [
+								{
+									"name": "non-existent task",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 404\", function () {",
+													"    pm.response.to.have.status(404);",
+													"});",
+													"",
+													"pm.test(\"Status code name has string 'Not Found'\", function () {",
+													"    pm.response.to.have.status(\"Not Found\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"id": "0f91571b-ec42-42d8-a405-9aea4f2a60b0"
+											}
+										}
+									],
+									"id": "7e769f0b-c2c8-47a1-8f96-1798b6ba0824",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{id_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}tasks/{{$randomInt}}",
+											"host": [
+												"{{baseURL}}tasks"
+											],
+											"path": [
+												"{{$randomInt}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "no auth",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 401\", function () {",
+													"    pm.response.to.have.status(401);",
+													"});",
+													"",
+													"pm.test(\"Status code name has string 'Unauthorized'\", function () {",
+													"    pm.response.to.have.status(\"Unauthorized\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"id": "52139d95-d442-4e4c-8431-a9ffc0034083"
+											}
+										}
+									],
+									"id": "2e220964-e224-46f0-846e-670d4feab869",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}tasks/{{id}}",
+											"host": [
+												"{{baseURL}}tasks"
+											],
+											"path": [
+												"{{id}}"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "cea665f0-cfaf-4bd2-9059-ef10ce437056"
+						}
+					],
+					"id": "3ac1d505-8820-4316-99c9-6bf3a36144e8"
+				},
+				{
+					"name": "update task",
+					"item": [
+						{
+							"name": "happy path",
+							"item": [
+								{
+									"name": "update task by admin",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"pm.test(\"Status code name has string 'OK'\", function () {",
+													"    pm.response.to.have.status(\"OK\");",
+													"});",
+													"",
+													"pm.test(\"Response body contains 'text'\", function () {",
+													"    pm.expect(responseData).to.have.property('text');",
+													"});",
+													"",
+													"pm.test(\"Response body contains 'answer'\", function () {",
+													"    pm.expect(responseData).to.have.property('answer');",
+													"});",
+													"",
+													"pm.test(\"Response body contains 'title'\", function () {",
+													"    pm.expect(responseData).to.have.property('title');",
+													"});",
+													"",
+													"pm.test(\"Response body contains 'id'\", function () {",
+													"    pm.expect(responseData).to.have.property('id');",
+													"});",
+													"",
+													"pm.test(\"ID is a non-negative integer\", function () {",
+													"    pm.expect(responseData.id).to.be.a('number');",
+													"    pm.expect(responseData.id).to.be.at.least(0, \"ID should be a non-negative integer\");",
+													"});",
+													"",
+													"// Получаем id из переменных окружения",
+													"let envId = pm.environment.get(\"id\");",
+													"",
+													"// Проверяем, что id в ответе совпадает с id из переменной окружения",
+													"pm.test(\"ID from environment matches ID from response\", function () {",
+													"    pm.expect(responseData.id).to.eql(envId);",
+													"});",
+													"",
+													"pm.test(\"Accept is present in response headers\", function () {",
+													"    pm.response.to.have.header(\"Accept\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"id": "b42ecafb-c35d-4ced-84b7-a200f2e1b8a7"
+											}
+										}
+									],
+									"id": "6624ab95-5108-4e60-887d-0405fa2eb93e",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{id_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": {{id}},\n  \"text\": \"sometext\",\n  \"answer\": \"someanswer\",\n  \"title\": \"sometitle\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}tasks/{{id}}",
+											"host": [
+												"{{baseURL}}tasks"
+											],
+											"path": [
+												"{{id}}"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "0a132d3a-9e89-4893-a362-a05c1e78fe89"
+						},
+						{
+							"name": "bad path",
+							"item": [
+								{
+									"name": "no auth",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 401\", function () {",
+													"    pm.response.to.have.status(401);",
+													"});",
+													"",
+													"pm.test(\"Status code name has string 'Unauthorized'\", function () {",
+													"    pm.response.to.have.status(\"Unauthorized\");",
+													"});",
+													"",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"id": "3bb8b39a-c8c8-44ce-a9fb-4fdef3d41da4"
+											}
+										}
+									],
+									"id": "a83592fa-2a97-4207-be81-324cb2707ac1",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": {{id}},\n  \"text\": \"sometext noauth\",\n  \"answer\": \"someanswer noauth\",\n  \"title\": \"sometitle noauth\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}tasks/{{id}}",
+											"host": [
+												"{{baseURL}}tasks"
+											],
+											"path": [
+												"{{id}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "int in fields",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});",
+													"",
+													"pm.test(\"Status code name has string 'Bad Request'\", function () {",
+													"    pm.response.to.have.status(\"Bad Request\");",
+													"});",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"id": "fd6039a0-e050-442f-89b0-81932e657f19"
+											}
+										}
+									],
+									"id": "add41c3e-02b6-47e5-8289-ad0470b405a4",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{id_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": {{id}},\n  \"text\": 3,\n  \"answer\": 189,\n  \"title\": 1789\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}tasks/{{id}}",
+											"host": [
+												"{{baseURL}}tasks"
+											],
+											"path": [
+												"{{id}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "update non-existent task",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});",
+													"",
+													"pm.test(\"Status code name has string 'Bad Request'\", function () {",
+													"    pm.response.to.have.status(\"Bad Request\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"id": "980a6e60-53cd-44dd-9db9-c6555253d0d2"
+											}
+										}
+									],
+									"id": "810d8f41-0b49-4e30-abdf-00c80152ba8b",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{id_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": {{$randomInt}},\n  \"text\": 3,\n  \"answer\": 189,\n  \"title\": 1789\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}tasks/{{$randomInt}}",
+											"host": [
+												"{{baseURL}}tasks"
+											],
+											"path": [
+												"{{$randomInt}}"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "206f0714-3405-4fc5-8572-362ba2e0645b"
+						}
+					],
+					"id": "25c0c638-b1c2-43cb-8650-c4ade11804ce"
+				},
+				{
+					"name": "partial update task",
+					"item": [
+						{
+							"name": "happy path",
+							"item": [
+								{
+									"name": "update all fields",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"pm.test(\"Status code name has string 'OK'\", function () {",
+													"    pm.response.to.have.status(\"OK\");",
+													"});",
+													"",
+													"pm.test(\"Response body contains 'text'\", function () {",
+													"    pm.expect(responseData).to.have.property('text');",
+													"});",
+													"",
+													"pm.test(\"Response body contains 'answer'\", function () {",
+													"    pm.expect(responseData).to.have.property('answer');",
+													"});",
+													"",
+													"pm.test(\"Response body contains 'title'\", function () {",
+													"    pm.expect(responseData).to.have.property('title');",
+													"});",
+													"",
+													"pm.test(\"Response body contains 'id'\", function () {",
+													"    pm.expect(responseData).to.have.property('id');",
+													"});",
+													"",
+													"pm.test(\"ID is a non-negative integer\", function () {",
+													"    pm.expect(responseData.id).to.be.a('number');",
+													"    pm.expect(responseData.id).to.be.at.least(0, \"ID should be a non-negative integer\");",
+													"});",
+													"",
+													"// Получаем id из переменных окружения",
+													"let envId = pm.environment.get(\"id\");",
+													"",
+													"// Проверяем, что id в ответе совпадает с id из переменной окружения",
+													"pm.test(\"ID from environment matches ID from response\", function () {",
+													"    pm.expect(responseData.id).to.eql(envId);",
+													"});",
+													"",
+													"pm.test(\"Accept is present in response headers\", function () {",
+													"    pm.response.to.have.header(\"Accept\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"id": "4f9939b7-4b15-4b95-a242-c02e2bf22247"
+											}
+										}
+									],
+									"id": "b3688582-491b-4d5d-934e-779bf9f2e85d",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{id_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": {{id}},\n  \"text\": \"update text\",\n  \"answer\": \"update answer\",\n  \"title\": \"update title\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}tasks/{{id}}",
+											"host": [
+												"{{baseURL}}tasks"
+											],
+											"path": [
+												"{{id}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "update text",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"pm.test(\"Status code name has string 'OK'\", function () {",
+													"    pm.response.to.have.status(\"OK\");",
+													"});",
+													"",
+													"pm.test(\"Response body contains 'text'\", function () {",
+													"    pm.expect(responseData).to.have.property('text');",
+													"});",
+													"",
+													"pm.test(\"Response body contains 'answer'\", function () {",
+													"    pm.expect(responseData).to.have.property('answer');",
+													"});",
+													"",
+													"pm.test(\"Response body contains 'title'\", function () {",
+													"    pm.expect(responseData).to.have.property('title');",
+													"});",
+													"",
+													"pm.test(\"Response body contains 'id'\", function () {",
+													"    pm.expect(responseData).to.have.property('id');",
+													"});",
+													"",
+													"pm.test(\"ID is a non-negative integer\", function () {",
+													"    pm.expect(responseData.id).to.be.a('number');",
+													"    pm.expect(responseData.id).to.be.at.least(0, \"ID should be a non-negative integer\");",
+													"});",
+													"",
+													"// Получаем id из переменных окружения",
+													"let envId = pm.environment.get(\"id\");",
+													"",
+													"// Проверяем, что id в ответе совпадает с id из переменной окружения",
+													"pm.test(\"ID from environment matches ID from response\", function () {",
+													"    pm.expect(responseData.id).to.eql(envId);",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"id": "37ca2e3c-6d58-4321-bff6-b128d378c357"
+											}
+										}
+									],
+									"id": "2e19df34-07f8-4922-8ac5-50a09b8f66fd",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{id_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": {{id}},\n  \"text\": \"update only text\",\n  \"answer\": \"update answer\",\n  \"title\": \"update title\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}tasks/{{id}}",
+											"host": [
+												"{{baseURL}}tasks"
+											],
+											"path": [
+												"{{id}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "update answer",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"pm.test(\"Status code name has string 'OK'\", function () {",
+													"    pm.response.to.have.status(\"OK\");",
+													"});",
+													"",
+													"pm.test(\"Response body contains 'text'\", function () {",
+													"    pm.expect(responseData).to.have.property('text');",
+													"});",
+													"",
+													"pm.test(\"Response body contains 'answer'\", function () {",
+													"    pm.expect(responseData).to.have.property('answer');",
+													"});",
+													"",
+													"pm.test(\"Response body contains 'title'\", function () {",
+													"    pm.expect(responseData).to.have.property('title');",
+													"});",
+													"",
+													"pm.test(\"Response body contains 'id'\", function () {",
+													"    pm.expect(responseData).to.have.property('id');",
+													"});",
+													"",
+													"pm.test(\"ID is a non-negative integer\", function () {",
+													"    pm.expect(responseData.id).to.be.a('number');",
+													"    pm.expect(responseData.id).to.be.at.least(0, \"ID should be a non-negative integer\");",
+													"});",
+													"",
+													"// Получаем id из переменных окружения",
+													"let envId = pm.environment.get(\"id\");",
+													"",
+													"// Проверяем, что id в ответе совпадает с id из переменной окружения",
+													"pm.test(\"ID from environment matches ID from response\", function () {",
+													"    pm.expect(responseData.id).to.eql(envId);",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"id": "bf78c81b-585c-4ba2-ac0b-ada6de96c0a0"
+											}
+										}
+									],
+									"id": "f8f51a03-2963-4307-bb2f-659974fdbdcd",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{id_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": {{id}},\n    \"text\": \"update only text\",\n    \"answer\": \"update answer second step\",\n    \"title\": \"update title\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/api/tasks/{{id}}",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"tasks",
+												"{{id}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "update title",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"const responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"pm.test(\"Status code name has string 'OK'\", function () {",
+													"    pm.response.to.have.status(\"OK\");",
+													"});",
+													"",
+													"pm.test(\"Response body contains 'text'\", function () {",
+													"    pm.expect(responseData).to.have.property('text');",
+													"});",
+													"",
+													"pm.test(\"Response body contains 'answer'\", function () {",
+													"    pm.expect(responseData).to.have.property('answer');",
+													"});",
+													"",
+													"pm.test(\"Response body contains 'title'\", function () {",
+													"    pm.expect(responseData).to.have.property('title');",
+													"});",
+													"",
+													"pm.test(\"Response body contains 'id'\", function () {",
+													"    pm.expect(responseData).to.have.property('id');",
+													"});",
+													"",
+													"pm.test(\"ID is a non-negative integer\", function () {",
+													"    pm.expect(responseData.id).to.be.a('number');",
+													"    pm.expect(responseData.id).to.be.at.least(0, \"ID should be a non-negative integer\");",
+													"});",
+													"",
+													"// Получаем id из переменных окружения",
+													"let envId = pm.environment.get(\"id\");",
+													"",
+													"// Проверяем, что id в ответе совпадает с id из переменной окружения",
+													"pm.test(\"ID from environment matches ID from response\", function () {",
+													"    pm.expect(responseData.id).to.eql(envId);",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"id": "cb3cfe0f-6cac-4021-9565-e3452a1adf2f"
+											}
+										}
+									],
+									"id": "9190972c-43e3-490f-b83b-aebecfbb3077",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{id_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": {{id}},\n    \"text\": \"update only text\",\n    \"answer\": \"update answer second step\",\n    \"title\": \"update title third step\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/api/tasks/{{id}}",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"tasks",
+												"{{id}}"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "c57bd592-c159-461b-a93b-25de834a9ca1"
+						},
+						{
+							"name": "bad path",
+							"item": [
+								{
+									"name": "no auth",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 401\", function () {",
+													"    pm.response.to.have.status(401);",
+													"});",
+													"",
+													"pm.test(\"Status code name has string 'Unauthorized'\", function () {",
+													"    pm.response.to.have.status(\"Unauthorized\");",
+													"});",
+													"",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"id": "9d01b7af-6e6c-4d13-a392-d026805d33e6"
+											}
+										}
+									],
+									"id": "fcebe63a-bcbd-4c1c-a60a-377589889abc",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": {{id}},\n  \"text\": \"update no auth\",\n  \"answer\": \"update no auth\",\n  \"title\": \"update no auth\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}tasks/{{id}}",
+											"host": [
+												"{{baseURL}}tasks"
+											],
+											"path": [
+												"{{id}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "int in fields",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});",
+													"",
+													"pm.test(\"Status code name has string 'Bad Request'\", function () {",
+													"    pm.response.to.have.status(\"Bad Request\");",
+													"});",
+													"",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"id": "57cf5975-d363-45a1-b5a0-de9c83942ce9"
+											}
+										}
+									],
+									"id": "58a1858b-e506-4f42-8348-d20f5ca4b134",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{id_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": {{id}},\n  \"text\": 8,\n  \"answer\": 56,\n  \"title\": 786\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseURL}}tasks/{{id}}",
+											"host": [
+												"{{baseURL}}tasks"
+											],
+											"path": [
+												"{{id}}"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "bdf44c6d-8239-4b2b-aa1c-0e09b0292305"
+						}
+					],
+					"id": "56443b8b-3c0a-494f-a53c-09f64459ec94"
+				},
+				{
+					"name": "delete task",
+					"item": [
+						{
+							"name": "happy path",
+							"item": [
+								{
+									"name": "delete task",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 204\", function () {",
+													"    pm.response.to.have.status(204);",
+													"});",
+													"pm.test(\"Status code name has string 'No Content'\", function () {",
+													"    pm.response.to.have.status(\"No Content\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"id": "26485ce0-4f1f-4c02-9e91-810dd8e5dfb9"
+											}
+										}
+									],
+									"id": "96f2cae0-b289-40f8-9d04-f0c50b905a79",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{id_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}tasks/{{id}}",
+											"host": [
+												"{{baseURL}}tasks"
+											],
+											"path": [
+												"{{id}}"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "c3879985-cc97-41b0-ad50-7b4653a9455d"
+						},
+						{
+							"name": "bad path",
+							"item": [
+								{
+									"name": "no auth",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 401\", function () {",
+													"    pm.response.to.have.status(401);",
+													"});",
+													"pm.test(\"Status code name has string 'Unauthorized'\", function () {",
+													"    pm.response.to.have.status(\"Unauthorized\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"id": "14043b78-c933-4516-8f5e-fe8b778194e1"
+											}
+										}
+									],
+									"id": "70160928-6e58-48fb-80ed-71c361688831",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}tasks/{{id}}",
+											"host": [
+												"{{baseURL}}tasks"
+											],
+											"path": [
+												"{{id}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "empty taskId",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});",
+													"pm.test(\"Status code name has string 'Bad Request'\", function () {",
+													"    pm.response.to.have.status(\"Bad Request\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"id": "20586e7a-ce31-4699-a083-3495afca65d2"
+											}
+										}
+									],
+									"id": "b7bef498-6127-41f1-9634-a6e3c50f24c9",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{id_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}tasks/",
+											"host": [
+												"{{baseURL}}tasks"
+											],
+											"path": [
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "non-existent task",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});",
+													"pm.test(\"Status code name has string 'Bad Request'\", function () {",
+													"    pm.response.to.have.status(\"Bad Request\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"id": "7f94ed81-dcb5-4862-a154-419b10000a5e"
+											}
+										}
+									],
+									"id": "c672787e-f0a7-4681-a0f7-a80a0303be17",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{id_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}tasks/{{$randomInt}}",
+											"host": [
+												"{{baseURL}}tasks"
+											],
+											"path": [
+												"{{$randomInt}}"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "0cf30da3-f77f-432b-886c-b65e9a2fcb31"
+						}
+					],
+					"id": "3e21e58d-9916-433f-be9e-07272098c422"
+				},
+				{
+					"name": "get all tasks",
+					"item": [
+						{
+							"name": "happy path",
+							"item": [
+								{
+									"name": "get all tasks success",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"pm.test(\"Status code name has string 'OK'\", function () {",
+													"    pm.response.to.have.status(\"OK\");",
+													"});",
+													"",
+													"// Проверка, что ответ — массив",
+													"pm.test(\"Response is an array\", function () {",
+													"    pm.expect(pm.response.json()).to.be.an(\"array\");",
+													"});",
+													"",
+													"// Проверка, что массив содержит хотя бы один объект",
+													"pm.test(\"Array contains at least one object\", function () {",
+													"    pm.expect(pm.response.json().length).to.be.above(0);",
+													"});",
+													"",
+													"// Проверка структуры каждого объекта в массиве",
+													"pm.test(\"Each object has expected properties\", function () {",
+													"    pm.response.json().forEach(item => {",
+													"        pm.expect(item).to.have.property(\"id\");",
+													"        pm.expect(item).to.have.property(\"text\");",
+													"        pm.expect(item).to.have.property(\"answer\");",
+													"        pm.expect(item).to.have.property(\"title\");",
+													"",
+													"        pm.expect(item.id).to.be.a(\"number\");",
+													"        pm.expect(item.text).to.be.a(\"string\");",
+													"        pm.expect(item.answer).to.be.a(\"string\");",
+													"        pm.expect(item.title).to.be.a(\"string\");",
+													"    });",
+													"});",
+													"",
+													"pm.test(\"Accept is present in response headers\", function () {",
+													"    pm.response.to.have.header(\"Accept\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"id": "ce846729-3a9a-4f2b-b5ef-6e8b4b3626b2"
+											}
+										}
+									],
+									"id": "d723a4f3-d782-4bbd-a797-37d64b26073d",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{id_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "accept",
+												"value": "*/*"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcyODE1NDY4NiwiYXV0aCI6IlJPTEVfQURNSU4iLCJpYXQiOjE3MjgwNjgyODZ9.ZVQHVd18asCmybsjB01qoCKc06a22IJktpoYkJv9nHKD3HAJtFowY6gIhwEc9olnI3gABPiGsWaDLq73F4biJg"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}tasks?page=0&size=20",
+											"host": [
+												"{{baseURL}}tasks"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "0"
+												},
+												{
+													"key": "size",
+													"value": "20"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "e97b4298-f21b-4394-af7a-1119d7ba44ae"
+						},
+						{
+							"name": "bad path",
+							"item": [
+								{
+									"name": "no auth",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 401\", function () {",
+													"    pm.response.to.have.status(401);",
+													"});",
+													"pm.test(\"Status code name has string 'Unauthorized'\", function () {",
+													"    pm.response.to.have.status(\"Unauthorized\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"id": "889d1c01-2796-43c3-8bef-6a6166f94eb2"
+											}
+										}
+									],
+									"id": "e98962c1-42dd-43d9-bc14-f5f7ec70f68c",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}asks?page=0&size=20",
+											"host": [
+												"{{baseURL}}asks"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "0"
+												},
+												{
+													"key": "size",
+													"value": "20"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "wrong method",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});",
+													"pm.test(\"Status code name has string 'Bad Request'\", function () {",
+													"    pm.response.to.have.status(\"Bad Request\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"id": "d7b30890-f8fc-474b-9230-d4e5324761ee"
+											}
+										}
+									],
+									"id": "15c37363-a99f-4a88-86b8-97cd799bf718",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{id_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseURL}}tasks?page=0&size=20",
+											"host": [
+												"{{baseURL}}tasks"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "0"
+												},
+												{
+													"key": "size",
+													"value": "20"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "742d6f3c-672f-4d37-bda3-5a7a666f428e"
+						}
+					],
+					"id": "63dbede2-8fcc-4908-82ec-d420cdfefdcd"
+				}
+			],
+			"id": "54287ad0-f17e-4cae-8efd-54398a83fbc5"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				],
+				"id": "d5ea71b8-4541-4f90-b1a5-26fea8ba1737"
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				],
+				"id": "2cbbac52-8637-4f35-9e46-9e5702bda115"
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "c54d4a97-6b44-4eb3-815f-e0cce0181191",
+			"key": "baseURL",
+			"value": "http://localhost:8080/api/"
+		}
+	]
+}
